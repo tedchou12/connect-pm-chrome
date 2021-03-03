@@ -1,0 +1,35 @@
+{
+  "name": "HENNGE Password Manager",
+  "description" : "HENNGE Password Manager for all of your services.",
+  "version": "1.0",
+  "manifest_version": 2,
+  "permissions": [
+                "storage", "tabs", "<all_urls>"
+               ],
+  "browser_action": {
+    "default_popup": "index.html",
+    "default_icon": "hennge.png"
+  },
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "content_scripts": [
+    {
+       "matches": ["*://kodama-test.jp.ngrok.io/*"],
+       "js": ["jquery.min.js", "content_auto.js"]
+    },
+    {
+       "matches": ["*://pm.jp.ngrok.io/*"],
+       "js": ["jquery.min.js", "content_login.js"]
+    }
+  ],
+  "commands": {
+    "_execute_browser_action": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+F",
+        "mac": "MacCtrl+Shift+F"
+      },
+      "description": "Opens hello.html"
+    }
+  }
+}
